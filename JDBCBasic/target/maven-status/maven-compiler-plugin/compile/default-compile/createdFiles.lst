@@ -1,0 +1,6 @@
+com/enigmacamp/entities/Unit.class
+com/enigmacamp/repository/Repository.class
+com/enigmacamp/repository/UnitRepository.class
+com/enigmacamp/entities/Item.class
+com/enigmacamp/repository/ItemRepository.class
+com/enigmacamp/Application.class
