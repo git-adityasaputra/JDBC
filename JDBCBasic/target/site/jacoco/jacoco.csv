@@ -1,6 +1,8 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
 JDBCBasic,com.enigmacamp.repository,UnitRepository,173,0,14,0,43,0,17,0,10,0
+JDBCBasic,com.enigmacamp.repository,StockRepository,218,0,12,0,48,0,14,0,8,0
 JDBCBasic,com.enigmacamp.repository,ItemRepository,193,0,12,0,44,0,14,0,8,0
 JDBCBasic,com.enigmacamp,Application,123,0,0,0,31,0,5,0,5,0
+JDBCBasic,com.enigmacamp.entities,Stock,76,0,0,0,19,0,10,0,10,0
 JDBCBasic,com.enigmacamp.entities,Unit,33,0,0,0,9,0,6,0,6,0
 JDBCBasic,com.enigmacamp.entities,Item,38,0,0,0,11,0,6,0,6,0

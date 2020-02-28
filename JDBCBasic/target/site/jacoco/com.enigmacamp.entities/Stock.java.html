@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Stock.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JDBCBasic</a> &gt; <a href="index.source.html" class="el_package">com.enigmacamp.entities</a> &gt; <span class="el_source">Stock.java</span></div><h1>Stock.java</h1><pre class="source lang-java linenums">package com.enigmacamp.entities;
+
+public class Stock {
+    private int id;
+    private int item_id;
+    private int quantity;
+    private int unit_id;
+
+<span class="nc" id="L9">    public Stock (Integer id, Integer item_id, Integer quantity, Integer unit_id){</span>
+<span class="nc" id="L10">        this.id = id;</span>
+<span class="nc" id="L11">        this.item_id = item_id;</span>
+<span class="nc" id="L12">        this.quantity = quantity;</span>
+<span class="nc" id="L13">        this. unit_id = unit_id;</span>
+<span class="nc" id="L14">    }</span>
+
+    public int getId() {
+<span class="nc" id="L17">        return id;</span>
+    }
+
+    public void setId(int id) {
+<span class="nc" id="L21">        this.id = id;</span>
+<span class="nc" id="L22">    }</span>
+
+    public int getItem_id() {
+<span class="nc" id="L25">        return item_id;</span>
+    }
+
+    public void setItem_id(int item_id) {
+<span class="nc" id="L29">        this.item_id = item_id;</span>
+<span class="nc" id="L30">    }</span>
+
+    public int getQuantity() {
+<span class="nc" id="L33">        return quantity;</span>
+    }
+
+    public void setQuantity(int quantity) {
+<span class="nc" id="L37">        this.quantity = quantity;</span>
+<span class="nc" id="L38">    }</span>
+
+    public int getUnit_id() {
+<span class="nc" id="L41">        return unit_id;</span>
+    }
+
+    public void setUnit_id(int unit_id) {
+<span class="nc" id="L45">        this.unit_id = unit_id;</span>
+<span class="nc" id="L46">    }</span>
+
+    @Override
+    public String toString() {
+<span class="nc" id="L50">        return String.format(&quot;| ID= %-9d  | ITEM ID= %-25d |  QTY= %-10d | UNIT ID= %-9d | \n&quot;, id, item_id,quantity,unit_id);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

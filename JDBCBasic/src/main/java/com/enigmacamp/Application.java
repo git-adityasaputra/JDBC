@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 
 import com.enigmacamp.entities.Item;
 import com.enigmacamp.repository.ItemRepository;
+import com.enigmacamp.repository.StockRepository;
 import com.mysql.cj.jdbc.MysqlDataSource;
 
 public class Application {
@@ -53,6 +54,9 @@ public class Application {
     }
 
     public static void main(String[] args) throws Exception {
+
+            
+
 //        Class.forName("com.mysql.cj.jdbc.Driver");
 //
 //        Connection conn = getConnection();
@@ -81,6 +85,9 @@ public class Application {
 
             DataSource ds = getDataSourceConnection(prop);
             Connection conn = ds.getConnection();
+
+            StockRepository stockRepository = new StockRepository(conn);
+            System.out.println(stockRepository.joinStockItemUnit());
 
             test(conn);
         }

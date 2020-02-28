@@ -1,4 +1,6 @@
 /home/aditya/Documents/Bootcamp/JDBCBasic/src/main/java/com/enigmacamp/Application.java
+/home/aditya/Documents/Bootcamp/JDBCBasic/src/main/java/com/enigmacamp/entities/Stock.java
+/home/aditya/Documents/Bootcamp/JDBCBasic/src/main/java/com/enigmacamp/repository/StockRepository.java
 /home/aditya/Documents/Bootcamp/JDBCBasic/src/main/java/com/enigmacamp/repository/ItemRepository.java
 /home/aditya/Documents/Bootcamp/JDBCBasic/src/main/java/com/enigmacamp/entities/Unit.java
 /home/aditya/Documents/Bootcamp/JDBCBasic/src/main/java/com/enigmacamp/repository/Repository.java
