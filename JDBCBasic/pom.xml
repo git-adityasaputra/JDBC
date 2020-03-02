@@ -29,7 +29,13 @@
                 <artifactId>protobuf-java</artifactId>
             </exclusion>
         </exclusions> 
-    </dependency>   
+    </dependency> 
+    <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-core</artifactId>
+        <version>3.2.4</version>
+    </dependency>
+
     <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>

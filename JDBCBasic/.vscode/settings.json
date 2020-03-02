@@ -1,4 +1,7 @@
 {
     "java.configuration.updateBuildConfiguration": "disabled",
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "editor.fontSize": 15,
+    "window.zoomLevel": 0,
+    "workbench.iconTheme": "vscode-great-icons"
 }

@@ -2,52 +2,79 @@
 
 public class Stock {
     private int id;
-    private int item_id;
     private int quantity;
+    private int item_id;
+    private String name_item;
     private int unit_id;
+    private String name_unit;
 
-<span class="nc" id="L9">    public Stock (Integer id, Integer item_id, Integer quantity, Integer unit_id){</span>
-<span class="nc" id="L10">        this.id = id;</span>
-<span class="nc" id="L11">        this.item_id = item_id;</span>
-<span class="nc" id="L12">        this.quantity = quantity;</span>
-<span class="nc" id="L13">        this. unit_id = unit_id;</span>
-<span class="nc" id="L14">    }</span>
+<span class="nc" id="L11">    public Stock(Integer id, Integer item_id, Integer quantity, Integer unit_id) {</span>
+<span class="nc" id="L12">        this.id = id;</span>
+<span class="nc" id="L13">        this.item_id = item_id;</span>
+<span class="nc" id="L14">        this.quantity = quantity;</span>
+<span class="nc" id="L15">        this.unit_id = unit_id;</span>
+<span class="nc" id="L16">    }</span>
+
+<span class="nc" id="L18">    public Stock(Integer id, Integer item_id, Integer quantity, Integer unit_id, String name_item, String name_unit) {</span>
+<span class="nc" id="L19">        this.id = id;</span>
+<span class="nc" id="L20">        this.item_id = item_id;</span>
+<span class="nc" id="L21">        this.quantity = quantity;</span>
+<span class="nc" id="L22">        this.unit_id = unit_id;</span>
+<span class="nc" id="L23">        this.name_item = name_item;</span>
+<span class="nc" id="L24">        this.name_unit = name_unit;</span>
+<span class="nc" id="L25">    }</span>
 
     public int getId() {
-<span class="nc" id="L17">        return id;</span>
+<span class="nc" id="L28">        return id;</span>
     }
 
     public void setId(int id) {
-<span class="nc" id="L21">        this.id = id;</span>
-<span class="nc" id="L22">    }</span>
+<span class="nc" id="L32">        this.id = id;</span>
+<span class="nc" id="L33">    }</span>
 
     public int getItem_id() {
-<span class="nc" id="L25">        return item_id;</span>
+<span class="nc" id="L36">        return item_id;</span>
     }
 
     public void setItem_id(int item_id) {
-<span class="nc" id="L29">        this.item_id = item_id;</span>
-<span class="nc" id="L30">    }</span>
+<span class="nc" id="L40">        this.item_id = item_id;</span>
+<span class="nc" id="L41">    }</span>
 
     public int getQuantity() {
-<span class="nc" id="L33">        return quantity;</span>
+<span class="nc" id="L44">        return quantity;</span>
     }
 
     public void setQuantity(int quantity) {
-<span class="nc" id="L37">        this.quantity = quantity;</span>
-<span class="nc" id="L38">    }</span>
+<span class="nc" id="L48">        this.quantity = quantity;</span>
+<span class="nc" id="L49">    }</span>
 
     public int getUnit_id() {
-<span class="nc" id="L41">        return unit_id;</span>
+<span class="nc" id="L52">        return unit_id;</span>
     }
 
     public void setUnit_id(int unit_id) {
-<span class="nc" id="L45">        this.unit_id = unit_id;</span>
-<span class="nc" id="L46">    }</span>
+<span class="nc" id="L56">        this.unit_id = unit_id;</span>
+<span class="nc" id="L57">    }</span>
+
+    public String getName_item() {
+<span class="nc" id="L60">        return name_item;</span>
+    }
+
+    public void setName_item(String name_item) {
+<span class="nc" id="L64">        this.name_item = name_item;</span>
+<span class="nc" id="L65">    }</span>
+
+    public String getName_unit() {
+<span class="nc" id="L68">        return name_unit;</span>
+    }
+
+    public void setName_unit(String name_unit) {
+<span class="nc" id="L72">        this.name_unit = name_unit;</span>
+<span class="nc" id="L73">    }</span>
 
     @Override
     public String toString() {
-<span class="nc" id="L50">        return String.format(&quot;| ID= %-9d  | ITEM ID= %-25d |  QTY= %-10d | UNIT ID= %-9d | \n&quot;, id, item_id,quantity,unit_id);</span>
+<span class="nc" id="L77">    return String.format(&quot;| ID= %-9d | ITEM ID= %-25d | QTY= %-10d | UNIT ID=%-9d | NAME ITEM= %-10s  | NAME UNIT=  %-10s | \n&quot;, id, item_id,quantity,unit_id, name_item,name_unit);</span>
     }
 
 }

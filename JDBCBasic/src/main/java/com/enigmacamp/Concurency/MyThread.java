@@ -1,31 +1,31 @@
-package com.enigmacamp.Concurency;
+// package com.enigmacamp.Concurency;
 
-public class MyThread extends Thread {
+// public class MyThread extends Thread {
 
-   private final Counter counter;
-   private final int count;
+//    private final Counter counter;
+//    private final int count;
 
-    public MyThread(Counter counter, int count) {
-        this.counter = counter;
-        this.count = count;
-    }
+//     public MyThread(Counter counter, int count) {
+//         this.counter = counter;
+//         this.count = count;
+//     }
 
-    @Override
-    public void run() {
+//     @Override
+//     public void run() {
 
-        for (int i = 0; i < count; i++) {
-            counter.increment();
-            System.out.println(getName()+ ": " + counter.getValue());
-        }
+//         for (int i = 0; i < count; i++) {
+//             counter.increment();
+//             System.out.println(getName()+ ": " + counter.getValue());
+//         }
 
 
-        // try {
-        //     for (int i = 0; i < 100; i++) {
-        //         System.out.println(getName() + " : " + i);
-        //         Thread.sleep(100);
-        //     }
-        // } catch (InterruptedException e) {
+//         // try {
+//         //     for (int i = 0; i < 100; i++) {
+//         //         System.out.println(getName() + " : " + i);
+//         //         Thread.sleep(100);
+//         //     }
+//         // } catch (InterruptedException e) {
 
-        // }
-    }
-}
+//         // }
+//     }
+// }

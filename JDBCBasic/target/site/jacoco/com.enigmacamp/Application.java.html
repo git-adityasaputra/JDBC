@@ -11,48 +11,52 @@ import javax.sql.DataSource;
 
 import com.enigmacamp.entities.Item;
 import com.enigmacamp.repository.ItemRepository;
+import com.enigmacamp.repository.StockRepository;
 import com.mysql.cj.jdbc.MysqlDataSource;
 
-<span class="nc" id="L16">public class Application {</span>
+<span class="nc" id="L17">public class Application {</span>
 
     public static Connection getConnection(Properties prop) throws SQLException {
-<span class="nc" id="L19">        Properties props = new Properties();</span>
-<span class="nc" id="L20">        props.put(&quot;user&quot;, prop.getProperty(&quot;database.user&quot;));</span>
-<span class="nc" id="L21">        props.put(&quot;password&quot;, prop.getProperty(&quot;database.password&quot;));</span>
+<span class="nc" id="L20">        Properties props = new Properties();</span>
+<span class="nc" id="L21">        props.put(&quot;user&quot;, prop.getProperty(&quot;database.user&quot;));</span>
+<span class="nc" id="L22">        props.put(&quot;password&quot;, prop.getProperty(&quot;database.password&quot;));</span>
 
         //(url: protokol:host/database)
-<span class="nc" id="L24">        Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/db_item&quot; + prop.getProperty(&quot;database.name&quot;), props);</span>
-<span class="nc" id="L25">        return conn;</span>
+<span class="nc" id="L25">        Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/db_item&quot; + prop.getProperty(&quot;database.name&quot;), props);</span>
+<span class="nc" id="L26">        return conn;</span>
     }
 
     public static DataSource getDataSourceConnection(Properties prop) throws SQLException {
-<span class="nc" id="L29">        MysqlDataSource ds = new MysqlDataSource();</span>
-<span class="nc" id="L30">        ds.setURL(&quot;jdbc:mysql://localhost:3306/&quot; + prop.getProperty(&quot;db.name&quot;));</span>
-<span class="nc" id="L31">        ds.setUser(prop.getProperty(&quot;db.user&quot;));</span>
-<span class="nc" id="L32">        ds.setPassword(prop.getProperty(&quot;db.password&quot;));</span>
+<span class="nc" id="L30">        MysqlDataSource ds = new MysqlDataSource();</span>
+<span class="nc" id="L31">        ds.setURL(&quot;jdbc:mysql://localhost:3306/&quot; + prop.getProperty(&quot;db.name&quot;));</span>
+<span class="nc" id="L32">        ds.setUser(prop.getProperty(&quot;db.user&quot;));</span>
+<span class="nc" id="L33">        ds.setPassword(prop.getProperty(&quot;db.password&quot;));</span>
 
 //        Connection conn = ds.getConnection();
-<span class="nc" id="L35">        return ds;</span>
+<span class="nc" id="L36">        return ds;</span>
     }
 
     public static void test(Connection conn) throws SQLException {
-<span class="nc" id="L39">        ItemRepository itemRepository = new ItemRepository(conn);</span>
+<span class="nc" id="L40">        ItemRepository itemRepository = new ItemRepository(conn);</span>
         try {
-<span class="nc" id="L41">            conn.setAutoCommit(false);</span>
-<span class="nc" id="L42">            System.out.println(&quot;add: &quot; + itemRepository.add(new Item(11, &quot;Bambang&quot;)));</span>
-<span class="nc" id="L43">            Item item = itemRepository.findById(11);</span>
-<span class="nc" id="L44">            System.out.println(&quot;findById: &quot; + item);</span>
-<span class="nc" id="L45">            item.setName(&quot;Agus&quot;);</span>
-<span class="nc" id="L46">            System.out.println(&quot;Edit: &quot; + itemRepository.edit(item));</span>
-<span class="nc" id="L47">            System.out.println(&quot;Remove: &quot; + itemRepository.remove(item));</span>
+<span class="nc" id="L42">            conn.setAutoCommit(false);</span>
+<span class="nc" id="L43">            System.out.println(&quot;add: &quot; + itemRepository.add(new Item(11, &quot;Bambang&quot;)));</span>
+<span class="nc" id="L44">            Item item = itemRepository.findById(11);</span>
+<span class="nc" id="L45">            System.out.println(&quot;findById: &quot; + item);</span>
+<span class="nc" id="L46">            item.setName(&quot;Agus&quot;);</span>
+<span class="nc" id="L47">            System.out.println(&quot;Edit: &quot; + itemRepository.edit(item));</span>
+<span class="nc" id="L48">            System.out.println(&quot;Remove: &quot; + itemRepository.remove(item));</span>
 
-<span class="nc" id="L49">            conn.commit();</span>
-<span class="nc" id="L50">        } catch (SQLException e) {</span>
-<span class="nc" id="L51">            conn.rollback();</span>
-<span class="nc" id="L52">        }</span>
-<span class="nc" id="L53">    }</span>
+<span class="nc" id="L50">            conn.commit();</span>
+<span class="nc" id="L51">        } catch (SQLException e) {</span>
+<span class="nc" id="L52">            conn.rollback();</span>
+<span class="nc" id="L53">        }</span>
+<span class="nc" id="L54">    }</span>
 
     public static void main(String[] args) throws Exception {
+
+            
+
 //        Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);
 //
 //        Connection conn = getConnection();
@@ -72,19 +76,22 @@ import com.mysql.cj.jdbc.MysqlDataSource;
 //        itemRepository.add(item);
 //        System.out.println(item);
 
-<span class="nc" id="L75">        try (InputStream input = new FileInputStream(&quot;./config.properties&quot;)) {</span>
-<span class="nc" id="L76">            Properties prop = new Properties();</span>
-<span class="nc" id="L77">            prop.load(input);</span>
+<span class="nc" id="L79">        try (InputStream input = new FileInputStream(&quot;./config.properties&quot;)) {</span>
+<span class="nc" id="L80">            Properties prop = new Properties();</span>
+<span class="nc" id="L81">            prop.load(input);</span>
 
             // System.out.println(prop.getProperty(&quot;database.user&quot;));
             // System.out.println(prop.getProperty(&quot;database.password&quot;));
 
-<span class="nc" id="L82">            DataSource ds = getDataSourceConnection(prop);</span>
-<span class="nc" id="L83">            Connection conn = ds.getConnection();</span>
+<span class="nc" id="L86">            DataSource ds = getDataSourceConnection(prop);</span>
+<span class="nc" id="L87">            Connection conn = ds.getConnection();</span>
 
-<span class="nc" id="L85">            test(conn);</span>
+<span class="nc" id="L89">            StockRepository stockRepository = new StockRepository(conn);</span>
+<span class="nc" id="L90">            System.out.println(stockRepository.joinStockItemUnit());</span>
+
+<span class="nc" id="L92">            test(conn);</span>
         }
 
-<span class="nc" id="L88">    }</span>
+<span class="nc" id="L95">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -18,83 +18,101 @@ public class StockRepository implements Repository&lt;Integer, Stock&gt; {
 <span class="nc" id="L18">        this.conn = conn;</span>
 <span class="nc" id="L19">    }</span>
 
+    
     @Override
     public boolean add(Stock entity) throws SQLException {
-<span class="nc" id="L23">        String sql = &quot;INSERT INTO stock (id, item_id, quantity, unit_id) VALUES (?,?)&quot;;</span>
-<span class="nc" id="L24">        try (PreparedStatement stmt = conn.prepareStatement(sql)) {</span>
-<span class="nc" id="L25">            stmt.setInt(1, entity.getId());</span>
-<span class="nc" id="L26">            stmt.setInt(2, entity.getItem_id());</span>
-<span class="nc" id="L27">            stmt.setInt(3, entity.getQuantity());</span>
-<span class="nc" id="L28">            stmt.setInt(4, entity.getUnit_id());</span>
-
-<span class="nc" id="L30">            int result = stmt.executeUpdate();</span>
-<span class="nc bnc" id="L31" title="All 2 branches missed.">            return result == 1;</span>
+<span class="nc" id="L24">        String sql = &quot;INSERT INTO stock (id, item_id, quantity, unit_id) VALUES (?,?)&quot;;</span>
+<span class="nc" id="L25">        try (PreparedStatement stmt = conn.prepareStatement(sql)) {</span>
+<span class="nc" id="L26">            stmt.setInt(1, entity.getId());</span>
+<span class="nc" id="L27">            stmt.setInt(2, entity.getItem_id());</span>
+<span class="nc" id="L28">            stmt.setInt(3, entity.getQuantity());</span>
+<span class="nc" id="L29">            stmt.setInt(4, entity.getUnit_id());</span>
+            
+<span class="nc" id="L31">            int result = stmt.executeUpdate();</span>
+<span class="nc bnc" id="L32" title="All 2 branches missed.">            return result == 1;</span>
         }
     }
-
+    
     @Override
     public boolean edit(Stock entity) throws SQLException {
-<span class="nc" id="L37">        String sql = &quot;UPDATE stock SET name = ? WHERE id = ?&quot;;</span>
-<span class="nc" id="L38">        try (PreparedStatement stmt = conn.prepareStatement(sql)) {</span>
-<span class="nc" id="L39">            stmt.setInt(1, entity.getItem_id());</span>
-<span class="nc" id="L40">            stmt.setInt(2, entity.getId());</span>
-<span class="nc" id="L41">            stmt.setInt(3, entity.getQuantity());</span>
-<span class="nc" id="L42">            stmt.setInt(4, entity.getUnit_id());</span>
-<span class="nc" id="L43">            int result = stmt.executeUpdate();</span>
-<span class="nc bnc" id="L44" title="All 2 branches missed.">            return result == 1;</span>
+<span class="nc" id="L38">        String sql = &quot;UPDATE stock SET id = ? WHERE id = ?&quot;;</span>
+<span class="nc" id="L39">        try (PreparedStatement stmt = conn.prepareStatement(sql)) {</span>
+<span class="nc" id="L40">            stmt.setInt(1, entity.getItem_id());</span>
+<span class="nc" id="L41">            stmt.setInt(2, entity.getId());</span>
+<span class="nc" id="L42">            stmt.setInt(3, entity.getQuantity());</span>
+<span class="nc" id="L43">            stmt.setInt(4, entity.getUnit_id());</span>
+<span class="nc" id="L44">            int result = stmt.executeUpdate();</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">            return result == 1;</span>
         }
     }
-
+    
     public boolean removeById(Integer id) throws SQLException {
-<span class="nc" id="L49">        String sql = &quot;DELETE FROM stock WHERE id = ?&quot;;</span>
-<span class="nc" id="L50">        try (PreparedStatement stmt = conn.prepareStatement(sql)) {</span>
-<span class="nc" id="L51">            stmt.setInt(1, id);</span>
-<span class="nc" id="L52">            int result = stmt.executeUpdate();</span>
-<span class="nc bnc" id="L53" title="All 2 branches missed.">            return result == 1;</span>
+<span class="nc" id="L50">        String sql = &quot;DELETE FROM stock WHERE id = ?&quot;;</span>
+<span class="nc" id="L51">        try (PreparedStatement stmt = conn.prepareStatement(sql)) {</span>
+<span class="nc" id="L52">            stmt.setInt(1, id);</span>
+<span class="nc" id="L53">            int result = stmt.executeUpdate();</span>
+<span class="nc bnc" id="L54" title="All 2 branches missed.">            return result == 1;</span>
         }
     }
-
+    
     @Override
     public boolean remove(Stock entity) throws SQLException {
-<span class="nc" id="L59">        return removeById(entity.getId());</span>
+<span class="nc" id="L60">        return removeById(entity.getId());</span>
     }
-
+    
     @Override
     public Stock findById(Integer id) throws SQLException {
-<span class="nc" id="L64">        String sql = &quot;SELECT id, name FROM stock WHERE id = ?&quot;;</span>
-<span class="nc" id="L65">        try (PreparedStatement stmt = conn.prepareStatement(sql)) {</span>
-<span class="nc" id="L66">            stmt.setInt(1, id);</span>
-<span class="nc" id="L67">            ResultSet rs = stmt.executeQuery();</span>
-<span class="nc bnc" id="L68" title="All 2 branches missed.">            if (rs.next()) {</span>
-<span class="nc" id="L69">                Stock entity = new Stock(rs.getInt(&quot;id&quot;), rs.getInt(&quot;item_id&quot;), rs.getInt(&quot;quantity&quot;),</span>
-<span class="nc" id="L70">                        rs.getInt(&quot;unit_id&quot;));</span>
-<span class="nc" id="L71">                entity.setId(rs.getInt(&quot;id&quot;));</span>
-<span class="nc" id="L72">                return entity;</span>
+<span class="nc" id="L65">        String sql = &quot;SELECT id, item_id, quantity, unit_id FROM stock WHERE id = ?&quot;;</span>
+<span class="nc" id="L66">        try (PreparedStatement stmt = conn.prepareStatement(sql)) {</span>
+<span class="nc" id="L67">            stmt.setInt(1, id);</span>
+<span class="nc" id="L68">            ResultSet rs = stmt.executeQuery();</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">            if (rs.next()) {</span>
+<span class="nc" id="L70">                Stock entity = new Stock(rs.getInt(&quot;id&quot;), rs.getInt(&quot;item_id&quot;), rs.getInt(&quot;quantity&quot;),</span>
+<span class="nc" id="L71">                rs.getInt(&quot;unit_id&quot;));</span>
+<span class="nc" id="L72">                entity.setId(rs.getInt(&quot;id&quot;));</span>
+<span class="nc" id="L73">                return entity;</span>
             }
-<span class="nc bnc" id="L74" title="All 2 branches missed.">        }</span>
-<span class="nc" id="L75">        return null;</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">        }</span>
+<span class="nc" id="L76">        return null;</span>
     }
+    
+    public List&lt;Stock&gt; joinStockItemUnit() throws SQLException {
+<span class="nc" id="L80">        List&lt;Stock&gt; result = new ArrayList&lt;&gt;();</span>
 
-    public List&lt;Stock&gt; findAll() throws SQLException {
-<span class="nc" id="L79">        List&lt;Stock&gt; result = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L82">        try (Statement stmt = conn.createStatement()) {</span>
+<span class="nc" id="L83">            String sql = &quot;SELECT s.id, s.item_id, s.quantity, s.unit_id, u.name as name_unit, i.name as name_item FROM stock s JOIN unit u ON s.unit_id = u.id JOIN item i ON s.item_id = i.id&quot;;</span>
+<span class="nc" id="L84">            ResultSet rs = stmt.executeQuery(sql);</span>
+<span class="nc bnc" id="L85" title="All 2 branches missed.">            while (rs.next()) {</span>
+<span class="nc" id="L86">                Stock entity = new Stock(rs.getInt(&quot;id&quot;), rs.getInt(&quot;item_id&quot;), rs.getInt(&quot;quantity&quot;),</span>
+<span class="nc" id="L87">                        rs.getInt(&quot;unit_id&quot;),rs.getString(&quot;name_item&quot;),rs.getString(&quot;name_unit&quot;));</span>
+<span class="nc" id="L88">                entity.setId(rs.getInt(&quot;id&quot;));</span>
 
-<span class="nc" id="L81">        try (Statement stmt = conn.createStatement()) {</span>
-<span class="nc" id="L82">            String sql = &quot;SELECT id, name FROM stock&quot;;</span>
-<span class="nc" id="L83">            ResultSet rs = stmt.executeQuery(sql);</span>
-<span class="nc bnc" id="L84" title="All 2 branches missed.">            while (rs.next()) {</span>
-<span class="nc" id="L85">                Stock entity = new Stock(rs.getInt(&quot;id&quot;), rs.getInt(&quot;item_id&quot;), rs.getInt(&quot;quantity&quot;),</span>
-<span class="nc" id="L86">                        rs.getInt(&quot;unit_id&quot;));</span>
-<span class="nc" id="L87">                entity.setId(rs.getInt(&quot;id&quot;));</span>
-
-<span class="nc" id="L89">                result.add(entity);</span>
-<span class="nc" id="L90">            }</span>
+<span class="nc" id="L90">                result.add(entity);</span>
+<span class="nc" id="L91">            }</span>
         }
-<span class="nc" id="L92">        return result;</span>
+<span class="nc" id="L93">        return result;</span>
+    }
+    
+    @Override
+    public List&lt;Stock&gt; findAll() throws SQLException {
+<span class="nc" id="L98">        List&lt;Stock&gt; result = new ArrayList&lt;&gt;();</span>
+
+<span class="nc" id="L100">        try (Statement stmt = conn.createStatement()) {</span>
+<span class="nc" id="L101">            String sql = &quot;SELECT id, name FROM stock&quot;;</span>
+<span class="nc" id="L102">            ResultSet rs = stmt.executeQuery(sql);</span>
+<span class="nc bnc" id="L103" title="All 2 branches missed.">            while (rs.next()) {</span>
+<span class="nc" id="L104">                Stock entity = new Stock(rs.getInt(&quot;id&quot;), rs.getInt(&quot;item_id&quot;), rs.getInt(&quot;quantity&quot;),</span>
+<span class="nc" id="L105">                        rs.getInt(&quot;unit_id&quot;));</span>
+
+<span class="nc" id="L107">                result.add(entity);</span>
+<span class="nc" id="L108">            }</span>
+        }
+<span class="nc" id="L110">        return result;</span>
     }
 
     @Override
     public boolean removeById(Stock entity) throws SQLException {
-<span class="nc" id="L97">        return false;</span>
+<span class="nc" id="L115">        return false;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

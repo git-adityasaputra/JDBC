@@ -10,7 +10,7 @@ public class App {
     public static void main(String[] args) throws Exception {
         int[] values = {111, 222, 333, 555, 666,777};
         
-        ExecutorService service = Executors.newFixedThreadPool(4);
+        ExecutorService service = Executors.newFixedThreadPool(6);
         List<Future<Integer>> futures = new ArrayList<>();
         for (int i = 0; i < values.length; i++) {
             Future <Integer> future = service.submit(new MyCallable(values[i]));

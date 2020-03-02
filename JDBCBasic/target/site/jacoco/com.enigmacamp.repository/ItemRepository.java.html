@@ -15,19 +15,19 @@ public class ItemRepository implements Repository&lt;Integer, Item&gt; {
 
     private final Connection conn;
 
-<span class="nc" id="L18">    public ItemRepository(Connection conn) {</span>
-<span class="nc" id="L19">        this.conn = conn;</span>
-<span class="nc" id="L20">    }</span>
+<span class="fc" id="L18">    public ItemRepository(Connection conn) {</span>
+<span class="fc" id="L19">        this.conn = conn;</span>
+<span class="fc" id="L20">    }</span>
 
     //ExecuteUpdate return Integer
     @Override
     public boolean add(Item entity) throws SQLException {
-<span class="nc" id="L25">        String sql = &quot;INSERT INTO item (id, name) VALUES (?,?)&quot;;</span>
-<span class="nc" id="L26">        try (PreparedStatement stmt = conn.prepareStatement(sql)) {</span>
-<span class="nc" id="L27">            stmt.setInt(1, entity.getId());</span>
-<span class="nc" id="L28">            stmt.setString(2, entity.getName());</span>
-<span class="nc" id="L29">            int result = stmt.executeUpdate();</span>
-<span class="nc bnc" id="L30" title="All 2 branches missed.">            return result == 1;</span>
+<span class="fc" id="L25">        String sql = &quot;INSERT INTO item (id, name) VALUES (?,?)&quot;;</span>
+<span class="fc" id="L26">        try (PreparedStatement stmt = conn.prepareStatement(sql)) {</span>
+<span class="fc" id="L27">            stmt.setInt(1, entity.getId());</span>
+<span class="fc" id="L28">            stmt.setString(2, entity.getName());</span>
+<span class="fc" id="L29">            int result = stmt.executeUpdate();</span>
+<span class="pc bpc" id="L30" title="1 of 2 branches missed.">            return result == 1;</span>
         }
     }
 
@@ -43,11 +43,11 @@ public class ItemRepository implements Repository&lt;Integer, Item&gt; {
     }
 
     public boolean removeById(Integer id) throws SQLException {
-<span class="nc" id="L46">        String sql = &quot;DELETE FROM item WHERE id = ?&quot;;</span>
-<span class="nc" id="L47">        try (PreparedStatement stmt = conn.prepareStatement(sql)) {</span>
-<span class="nc" id="L48">            stmt.setInt(1, id);</span>
-<span class="nc" id="L49">            int result = stmt.executeUpdate();</span>
-<span class="nc bnc" id="L50" title="All 2 branches missed.">            return result == 1;</span>
+<span class="fc" id="L46">        String sql = &quot;DELETE FROM item WHERE id = ?&quot;;</span>
+<span class="fc" id="L47">        try (PreparedStatement stmt = conn.prepareStatement(sql)) {</span>
+<span class="fc" id="L48">            stmt.setInt(1, id);</span>
+<span class="fc" id="L49">            int result = stmt.executeUpdate();</span>
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">            return result == 1;</span>
         }
     }
 
